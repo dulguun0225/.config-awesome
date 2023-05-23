@@ -135,6 +135,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
 
+
 -- {{{ Wibar
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
@@ -180,15 +181,7 @@ local tasklist_buttons = gears.table.join(
     end))
 
 local function set_wallpaper(s)
-    -- Wallpaper
-    if beautiful.wallpaper then
-        local wallpaper = beautiful.wallpaper
-        -- If wallpaper is a function, call it with the screen
-        if type(wallpaper) == "function" then
-            wallpaper = wallpaper(s)
-        end
-        gears.wallpaper.maximized(wallpaper, s, true)
-    end
+    gears.wallpaper.maximized("/home/dulguuno/Pictures/hd-wallpaper-gbce0220fa_1920.jpg", s)
 end
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
@@ -266,8 +259,12 @@ root.buttons(gears.table.join(
 -- {{{ Key bindings
 globalkeys = gears.table.join(
     awful.key({ modkey, "Control", }, "x", function() xrandr.xrandr() end),
+    awful.key({}, "XF86AudioRaiseVolume", function() volumecfg:up() end),
+    awful.key({}, "XF86AudioLowerVolume", function() volumecfg:down() end),
+    awful.key({}, "XF86AudioMute",        function() volumecfg:toggle() end),
     awful.key({ modkey }, "Up", function() volumecfg:up() end),
     awful.key({ modkey }, "Down", function() volumecfg:down() end),
+    awful.key({ modkey }, "Space", function() mykeyboardlayout.set("mn") end),
     -- awful.key({}, "XF86AudioMute",        function() volumecfg:toggle() end),
 
     awful.key({ modkey, }, "s", hotkeys_popup.show_help,
