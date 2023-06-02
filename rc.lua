@@ -264,7 +264,7 @@ globalkeys = gears.table.join(
     awful.key({}, "XF86AudioMute",        function() volumecfg:toggle() end),
     awful.key({ modkey }, "Up", function() volumecfg:up() end),
     awful.key({ modkey }, "Down", function() volumecfg:down() end),
-    awful.key({ modkey }, "Space", function() mykeyboardlayout.set("mn") end),
+    awful.key({ modkey }, "Space", function() mykeyboardlayout.next_layout() end),
     -- awful.key({}, "XF86AudioMute",        function() volumecfg:toggle() end),
 
     awful.key({ modkey, }, "s", hotkeys_popup.show_help,
@@ -330,8 +330,6 @@ globalkeys = gears.table.join(
         { description = "increase the number of columns", group = "layout" }),
     awful.key({ modkey, "Control" }, "l", function() awful.tag.incncol(-1, nil, true) end,
         { description = "decrease the number of columns", group = "layout" }),
-    awful.key({ modkey, }, "space", function() awful.layout.inc(1) end,
-        { description = "select next", group = "layout" }),
     awful.key({ modkey, "Shift" }, "space", function() awful.layout.inc(-1) end,
         { description = "select previous", group = "layout" }),
 
